@@ -174,6 +174,8 @@ else {
 }
 
 choco install 7zip.install -y
+choco install typora -y
+choco install postman -y
 choco install googlechrome -y
 choco install jetbrainstoolbox -y
 choco install launchy -y
