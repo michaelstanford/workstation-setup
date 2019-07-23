@@ -47,6 +47,7 @@ Expand-Archive ./Ubuntu.zip ./Ubuntu
 #opens PC to This PC, not quick access
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Value 1
 
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName containers -All -NoRestart
 
 # installing Windows Template Studio VSIX
@@ -186,7 +187,6 @@ choco install vscode-powershell -y
 choco install -y vscode-docker
 choco install github-desktop -y
 choco install visualstudio2019community -y --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
-
 
 
 Read-Host -Prompt "Setup finished, press [ENTER] to restart."
