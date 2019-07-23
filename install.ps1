@@ -43,8 +43,6 @@ Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile Ubuntu.appx -UseB
 Rename-Item ./Ubuntu.appx ./Ubuntu.zip
 Expand-Archive ./Ubuntu.zip ./Ubuntu
 
-# Show hidden files, Show protected OS files, Show file extensions
-Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
 
 #opens PC to This PC, not quick access
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Value 1
