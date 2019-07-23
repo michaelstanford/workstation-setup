@@ -178,7 +178,12 @@ choco install slack -y
 choco install discord.install -y
 choco install docker-cli -y
 choco install -y docker-for-windows
+choco install vscode -y
+choco install vscode-mssql -y
+choco install linqpad -y
+choco install vscode-powershell -y
 choco install -y vscode-docker
+choco install github-desktop -y
 choco install visualstudio2019community -y --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
 
 
