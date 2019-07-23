@@ -7,7 +7,7 @@ function Check-Command($cmdname) {
 # Rename Computer -----------------------------------------------------------------------------
 $computerName = Read-Host 'Enter New Computer Name'
 Write-Host "Renaming this computer to: " $computerName  -ForegroundColor Yellow
-Rename-Computer -NewName $computerName
+Rename-Computer -NewName $computerName -Force
 
 # Disable sleep when plugged in to power -----------------------------------------------------------------------------
 Write-Host ""
@@ -34,7 +34,7 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
 
 # Enable WSL ------------------------------------------------------------------------------------
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
 
 # Download Ubuntu ------------------------------------------------------------------------------------
 Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile Ubuntu.appx -UseBasicParsing
@@ -47,8 +47,7 @@ Expand-Archive ./Ubuntu.zip ./Ubuntu
 #opens PC to This PC, not quick access
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Value 1
 
-Enable-WindowsOptionalFeature -Online -FeatureName containers -All
-RefreshEnv
+Enable-WindowsOptionalFeature -Online -FeatureName containers -All -NoRestart
 
 # installing Windows Template Studio VSIX
 Write-Host "Installing Windows Template Studio" -ForegroundColor "Yellow"
@@ -96,6 +95,9 @@ function removeApp {
 }
 
 $applicationList = @(
+	"Microsoft.MicrosoftEdge"
+	"Microsoft.Office.OneNote"
+	"Microsoft.SkypeApp"
 	"Microsoft.BingFinance"
 	"Microsoft.3DBuilder"
 	"Microsoft.BingFinance"
@@ -175,7 +177,6 @@ choco install googlechrome -y
 choco install jetbrainstoolbox -y
 choco install launchy -y
 choco install slack -y
-choco install discord.install -y
 choco install docker-cli -y
 choco install -y docker-for-windows
 choco install vscode -y
